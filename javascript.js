@@ -35,5 +35,12 @@ const button = document.querySelector("#reset");
 button.addEventListener("click", () => {
     let newSize = parseInt(prompt("Enter a new dimension for the grid."));
     clear();
+    if (newSize > 100) {
+        const sizeMessage = document.createElement("div");
+        sizeMessage.textContent = "Grid dimensions cannot exceed 100x100.";
+        const main = document.querySelector(".main");
+        main.appendChild(sizeMessage);
+        newSize = 100;
+    }
     resetGrid(newSize);
 });
